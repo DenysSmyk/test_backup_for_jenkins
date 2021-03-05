@@ -1,1 +1,15 @@
-pipline
+pipeline {
+    agent any
+    stages {
+        stage('test') {
+            steps {
+                sh 'cd $JENKINS_HOME'
+                sh 'BACKUP_TIME=${date}'
+                sh 'git add .'
+                sh 'git commit -m "backup-$BACKUP_TIME"'
+                sh 'git push -u origin master'
+                sh 'echo "backup pushed successfully"'
+            }
+        }
+    }
+}
