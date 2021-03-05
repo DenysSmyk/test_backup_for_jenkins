@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh 'cd $JENKINS_HOME'
+                sh 'cd $JENKINS_HOME/jobs/'
                 sh 'BACKUP_TIME=${date}'
                 sh 'git add .'
                 sh 'git commit -m "backup-$BACKUP_TIME"'
